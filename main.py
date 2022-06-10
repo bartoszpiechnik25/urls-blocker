@@ -4,7 +4,7 @@ from blocker import Mode
 if __name__ == '__main__':
     blocker = Mode(sys.argv[1], sys.argv[2])
     if sys.argv[1] == 'write':
-        blocker.add_blocked_urls(*sys.argv[3:])
+        blocker.add_blocked_urls(*sys.argv[2:])
         sys.exit(0)
     elif sys.argv[1] == 'block':
         blocker.block([int(sys.argv[3]), int(sys.argv[4])],

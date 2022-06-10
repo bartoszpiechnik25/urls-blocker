@@ -6,5 +6,5 @@ Just run script as follow and enjoy being focused :)
 * main.py write 'www.facebook.com' 'www.youtube.com'
 
 ## Start focus time
-* main.py block start_hour start_minute end_hour end_minute
-* main.py block 17 24 18 54
+* main.py block [windows|linux|macos] start_hour start_minute end_hour end_minute
+* main.py block windows 17 24 18 54
