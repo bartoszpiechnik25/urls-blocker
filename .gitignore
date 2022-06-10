@@ -188,8 +188,10 @@ cython_debug/
 
 # Ignore code-workspaces
 *.code-workspace
-# Ignore files
-original.txt
-websites_urls.txt
+
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
+
+# Files
+original.txt
+websites_urls.txt

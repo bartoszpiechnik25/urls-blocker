@@ -14,7 +14,7 @@ class Mode:
             self.__default = self.__windows_path
         else:
             self.__default = self.__linux_path
-        self.__blockedlist = open('websites_urls.txt', 'r').readlines()
+        self.__blockedlist = open('websites_urls.txt', 'r+').readlines()
         self.__local_host = '127.0.0.1'
     
     def add_blocked_urls(self, *args) -> None:
@@ -23,7 +23,7 @@ class Mode:
         those blocked urls used for blocking.
         """
         if self.__mode == 'write':
-            file = open('websites_urls.txt', 'a')
+            file = open('websites_urls.txt', 'a+')
             for url in args:
                 if url not in self.__blockedlist:
                     file.write(url + '\n')
@@ -54,7 +54,7 @@ class Mode:
         """
         This function reset hosts file.
         """
-        origin = open('original.txt', 'r').readlines()
+        origin = open('original.txt', 'r+').readlines()
         with open(self.__default, 'w+') as file:
             file.writelines(origin)
 
