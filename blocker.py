@@ -3,7 +3,7 @@ from datetime import datetime as dt
 import sys
 
 
-class Mode:
+class Blocker:
 
     def __init__(self, mode: str, default: str) -> None:
         self.__mode = mode
@@ -110,6 +110,6 @@ if __name__ == '__main__':
     # with open(path, 'r') as file:
     #     new = file.readlines()
     #     print(*new)
-    test = Mode('block', 'windows')
+    test = Blocker('block', 'windows')
     test.reset_hosts()
 

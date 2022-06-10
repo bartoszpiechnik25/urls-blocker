@@ -1,8 +1,8 @@
 import sys
-from blocker import Mode
+from blocker import Blocker
 
 if __name__ == '__main__':
-    blocker = Mode(sys.argv[1], sys.argv[2])
+    blocker = Blocker(sys.argv[1], sys.argv[2])
     if sys.argv[1] == 'write':
         blocker.add_blocked_urls(*sys.argv[2:])
         sys.exit(0)
