@@ -84,15 +84,15 @@ class Mode:
         self.__save_original()
 
         try:
+            self.__create_blocked()
+            if start < dt.now() < finish:
+                print('Focus time....')
             while True:
-                if start < dt.now() < finish:
-                    print("Focus time!")
-                    self.__create_blocked()
-                else:
+                if not (start < dt.now() < finish):
                     self.__reset_hosts()
                     print('Free time')
                     break
-                time.sleep(10)
+                time.sleep(60)
         except KeyboardInterrupt:
             self.__reset_hosts()
         finally:
