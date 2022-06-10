@@ -9,9 +9,12 @@ class Mode:
         self.__mode = mode
         self.__linux_path = '/etc/hosts'
         self.__windows_path = r'C:\Windows\System32\drivers\etc\hosts'
+        self.__macos = '/private/etc/hosts'
         self.__default = ''
         if default.lower() == 'windows':
             self.__default = self.__windows_path
+        elif default.lower() == 'macos':
+            self.__default = self.__macos
         else:
             self.__default = self.__linux_path
         self.__blockedlist = open('websites_urls.txt', 'r+').readlines()
@@ -25,7 +28,7 @@ class Mode:
         if self.__mode == 'write':
             file = open('websites_urls.txt', 'a+')
             for url in args:
-                if url not in self.__blockedlist:
+                if url + '\n' not in self.__blockedlist:
                     file.write(url + '\n')
             file.close()
 
@@ -47,8 +50,8 @@ class Mode:
         with open(self.__default, 'a+') as file:
             hosts = file.readlines()
             for url in self.__blockedlist:
-                if url not in hosts:
-                    file.write(self.__local_host + ' ' + url + '\n')
+                if self.__local_host + ' ' + url+'\n' not in hosts:
+                    file.write(self.__local_host + ' ' + url)
     
     def __reset_hosts(self) -> None:
         """
@@ -95,6 +98,10 @@ class Mode:
         finally:
             print("Finishing execution")
             sys.exit(0)
+    
+    def clear_url_file(self) -> None:
+        with open('websites_urls.txt', 'r+') as file:
+            file.truncate(0)
 
     
 
