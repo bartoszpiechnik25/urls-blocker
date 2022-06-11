@@ -86,6 +86,9 @@ class Blocker:
         try:
             self.__create_blocked()
             if start < dt.now() < finish:
+                print('Websites: \n' + 
+                ''.join(self.__blockedlist) + 'Blocked' + 
+                f' from {start} to {finish}')
                 print('Focus time....')
             while True:
                 if not (start < dt.now() < finish):
