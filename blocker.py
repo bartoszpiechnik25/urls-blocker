@@ -17,7 +17,10 @@ class Blocker:
             self.__default = self.__macos
         else:
             self.__default = self.__linux_path
-        self.__blockedlist = open('websites_urls.txt', 'r+').readlines()
+        try:
+            self.__blockedlist = open('websites_urls.txt', 'r+').readlines()
+        except FileNotFoundError:
+            self.__blockedlist = open('websites_urls.txt', 'w+')
         self.__local_host = '127.0.0.1'
     
     def add_blocked_urls(self, *args) -> None:
